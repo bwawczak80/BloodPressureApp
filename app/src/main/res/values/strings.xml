@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">BloodPressureApp</string>
+    <string name="userLoginNameHint">Enter Your User Name</string>
+    <string name="userPasswordHint">Enter Your Password</string>
+    <string name="loginButtonTxt">Login</string>
+    <string name="errMessageLogin">That is not the correct User Name</string>
+    <string name="errMessagePassword">That is not the correct password</string>
+</resources>
