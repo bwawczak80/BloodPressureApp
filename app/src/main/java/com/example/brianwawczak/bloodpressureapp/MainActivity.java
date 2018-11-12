@@ -1,29 +1,22 @@
 package com.example.brianwawczak.bloodpressureapp;
 
-import android.content.Context;
-import android.support.v7.app.AppCompatActivity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import static android.widget.Toast.makeText;
-
 public class MainActivity extends AppCompatActivity {
     public enum LoginSuccess {
-        login(1),
-        password(2),
-        success(0);
+        login(),
+        password(),
+        success();
 
-        private int intValue;
-        LoginSuccess(int value){
-            intValue = value;
+        LoginSuccess(){
         }
 
-        public int getIntValue() {
-            return intValue;
-        }
     }
 
     @Override
@@ -38,24 +31,28 @@ public class MainActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast toastError = null;
 
                 switch(CheckLogin(txtLogin.getText().toString(), txtPass.getText().toString())){
                     case login:
-                        toastError.makeText(getApplicationContext(),getString(R.string.errMessageLogin), toastError.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(),getString(R.string.errMessageLogin), Toast.LENGTH_LONG).show();
                         txtLogin.requestFocus();
                         break;
 
                     case password:
-                        toastError.makeText(getApplicationContext(), getString(R.string.errMessagePassword), toastError.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), getString(R.string.errMessagePassword), Toast.LENGTH_LONG).show();
                         txtPass.requestFocus();
                         break;
                     default:
-                        toastError.makeText(getApplicationContext(), "success", toastError.LENGTH_LONG).show();
+                        openHomeScreen();
                         break;
                 }
             }
         });
+    }
+
+    public void openHomeScreen(){
+        Intent intent = new Intent (this, HomeScreen.class);
+        startActivity(intent);
     }
 
     LoginSuccess CheckLogin(String txtLogin, String txtPassword){

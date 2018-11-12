@@ -13,49 +13,100 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
+        android:contentDescription="@string/imageDescr"
+        android:scaleType="fitCenter"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.777"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/blood_pressure" />
 
+    <EditText
+        android:id="@+id/idBpInput2"
+        android:layout_width="128dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="24dp"
+        android:ems="10"
+        android:gravity="center_vertical|center_horizontal"
+        android:hint="@string/inputHintTwo"
+        android:inputType="number"
+        android:textAlignment="center"
+        app:layout_constraintStart_toEndOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+    <EditText
+        android:id="@+id/idUserBpInput1"
+        android:layout_width="128dp"
+        android:layout_height="43dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginTop="24dp"
+        android:ems="10"
+        android:gravity="center_vertical|center_horizontal"
+        android:hint="@string/inputHintOne"
+        android:inputType="number"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toStartOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="48dp"
+        android:layout_height="43dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:gravity="center_vertical|center_horizontal"
+        android:text="@string/bpLabel"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="20dp" />
+
     <Spinner
-        android:id="@+id/idDropDownMenu"
+        android:id="@+id/idSpinner"
         android:layout_width="332dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="8dp"
+        android:entries="@array/appChoices"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
-    <EditText
-        android:id="@+id/editText"
-        android:layout_width="117dp"
-        android:layout_height="49dp"
-        android:ems="10"
-        android:inputType="textPersonName|number"
-        android:text="Name"
-        tools:layout_editor_absoluteX="234dp"
-        tools:layout_editor_absoluteY="307dp" />
-
-    <EditText
-        android:id="@+id/editText2"
-        android:layout_width="117dp"
-        android:layout_height="49dp"
-        android:ems="10"
-        android:inputType="textPersonName|number"
-        android:text="Name"
-        tools:layout_editor_absoluteX="36dp"
-        tools:layout_editor_absoluteY="307dp" />
+    <Button
+        android:id="@+id/idButtonSubmit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/btnSubmit"
+        tools:layout_editor_absoluteX="147dp"
+        tools:layout_editor_absoluteY="336dp" />
 
     <TextView
-        android:id="@+id/textView"
-        android:layout_width="62dp"
-        android:layout_height="49dp"
+        android:id="@+id/textView2"
+        android:layout_width="332dp"
+        android:layout_height="30dp"
+        android:gravity="center_vertical|center_horizontal"
         android:text="TextView"
-        tools:layout_editor_absoluteX="163dp"
-        tools:layout_editor_absoluteY="307dp" />
+        android:textAlignment="center"
+        tools:layout_editor_absoluteX="26dp"
+        tools:layout_editor_absoluteY="391dp" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="332dp"
+        android:layout_height="52dp"
+        android:gravity="center_vertical|center_horizontal"
+        android:text="TextView"
+        android:textAlignment="center"
+        tools:layout_editor_absoluteX="26dp"
+        tools:layout_editor_absoluteY="443dp" />
+
 </android.support.constraint.ConstraintLayout>

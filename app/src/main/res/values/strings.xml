@@ -1,8 +1,19 @@
 <resources>
+    <string name="btnSubmit">Submit</string>
     <string name="app_name">BloodPressureApp</string>
     <string name="userLoginNameHint">Enter Your User Name</string>
     <string name="userPasswordHint">Enter Your Password</string>
     <string name="loginButtonTxt">Login</string>
     <string name="errMessageLogin">That is not the correct User Name</string>
     <string name="errMessagePassword">That is not the correct password</string>
+    <string name="imageDescr">Blood Pressure Image</string>
+    <string name="inputHintOne">Systolic</string>
+    <string name="inputHintTwo">Diastolic</string>
+    <string name="bpLabel">/</string>
+    <string-array name="appChoices">
+        <item>Log Blood Pressure</item>
+        <item>View Previous Log</item>
+        <item>View Weekly Average</item>
+    </string-array>
+
 </resources>
