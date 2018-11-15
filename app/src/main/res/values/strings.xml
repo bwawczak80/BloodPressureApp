@@ -1,5 +1,7 @@
 <resources>
-    <string name="btnSubmit">Submit</string>
+    <string name="btnLogBP">Log Blood Pressure</string>
+    <string name="btnViewHistory">View History</string>
+    <string name="btnViewAverage">View Weekly Average</string>
     <string name="app_name">BloodPressureApp</string>
     <string name="userLoginNameHint">Enter Your User Name</string>
     <string name="userPasswordHint">Enter Your Password</string>
@@ -10,10 +12,12 @@
     <string name="inputHintOne">Systolic</string>
     <string name="inputHintTwo">Diastolic</string>
     <string name="bpLabel">/</string>
-    <string-array name="appChoices">
-        <item>Log Blood Pressure</item>
-        <item>View Previous Log</item>
-        <item>View Weekly Average</item>
-    </string-array>
+    <string name="bpLogDisplay">Your blood pressure is </string>
+    <string name="bpNormal">Your blood pressure is normal</string>
+    <string name="bpElevated">Your blood pressure is elevated</string>
+    <string name="bpStage1">You have stage 1 hypertension</string>
+    <string name="bpStage2">You have stage 2 hypertension</string>
+    <string name="bpCrisis">You are having a hypertensive crisis!</string>
+
 
 </resources>
