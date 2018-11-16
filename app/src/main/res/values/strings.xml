@@ -18,6 +18,5 @@
     <string name="bpStage1">You have stage 1 hypertension</string>
     <string name="bpStage2">You have stage 2 hypertension</string>
     <string name="bpCrisis">You are having a hypertensive crisis!</string>
-
-
+    <string name="bpLow">Your blood pressure is low</string>
 </resources>
