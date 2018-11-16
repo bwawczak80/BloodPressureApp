@@ -62,18 +62,9 @@ public class HomeScreen extends AppCompatActivity {
                 String displayString =  " " + systolicDouble + " / " + diastolicDouble;
                 bpDisplay.setText(getString(R.string.bpLogDisplay).concat(displayString));
 
-                if (systolicDouble < 120 && diastolicDouble < 80){
-                    bpWarningLevel = 1;
-                }else if (systolicDouble >= 120 && systolicDouble < 130 && diastolicDouble < 80){
-                    bpWarningLevel = 2;
-                }else if (systolicDouble >= 130 && systolicDouble < 140 && diastolicDouble < 89 || diastolicDouble >= 80 && diastolicDouble < 89){
-                    bpWarningLevel = 3;
-                } else if (systolicDouble >= 140 && systolicDouble < 180 && diastolicDouble < 120 || diastolicDouble >= 90 && diastolicDouble < 120) {
-                    bpWarningLevel = 4;
-                }else if (systolicDouble >= 180 || diastolicDouble >= 120){
-                    bpWarningLevel = 5;
-                }else if (systolicDouble < 100 || diastolicDouble < 60)
-                    bpWarningLevel = 6;
+                calculateBpRange(systolicDouble, diastolicDouble);
+
+                bpWarningLevel = calculateBpRange(systolicDouble, diastolicDouble);
 
                 switch(bpWarningLevel){
                     case 1:
@@ -122,10 +113,24 @@ public class HomeScreen extends AppCompatActivity {
         });
     }
 
-//    public int calculateBpRange(int s, int d){
-//
-//
-//    }
+    public int calculateBpRange(double s, double d){
+        int bpWarningLevel = 0;
+        if (s < 120 && d < 80){
+            bpWarningLevel = 1;
+        }else if (s >= 120 && s < 130 && d < 80){
+            bpWarningLevel = 2;
+        }else if (s >= 130 && s < 140 && d < 89 || d >= 80 && d < 89){
+            bpWarningLevel = 3;
+        } else if (s >= 140 && s < 180 && d < 120 || d >= 90 && d < 120) {
+            bpWarningLevel = 4;
+        }else if (s >= 180 || d >= 120){
+            bpWarningLevel = 5;
+        }else if (s < 100 || d < 60)
+            bpWarningLevel = 6;
+        return bpWarningLevel;
+
+
+    }
 
     public void writeFile() {
         String systolicUserInput = systolic.getText().toString();
@@ -133,7 +138,7 @@ public class HomeScreen extends AppCompatActivity {
         String bloodPressure = systolicUserInput + " / " + diastolicUserInput;
 
         try {
-            FileOutputStream fileOutputStream = openFileOutput("bloodPressureLog.text", MODE_PRIVATE);
+            FileOutputStream fileOutputStream = openFileOutput("bloodPressureLog.txt", MODE_PRIVATE);
             fileOutputStream.write(bloodPressure.getBytes());
             fileOutputStream.close();
 
@@ -153,7 +158,7 @@ public class HomeScreen extends AppCompatActivity {
     public void readFile() {
 
         try {
-            FileInputStream fileInputStream = openFileInput("bloodPressureLog.text");
+            FileInputStream fileInputStream = openFileInput("bloodPressureLog.txt");
             InputStreamReader inputStreamReader = new InputStreamReader(fileInputStream);
 
             BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
