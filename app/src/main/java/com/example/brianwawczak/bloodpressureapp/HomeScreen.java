@@ -1,5 +1,6 @@
 package com.example.brianwawczak.bloodpressureapp;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
@@ -16,6 +17,8 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.text.DateFormat;
+import java.util.Date;
 
 public class HomeScreen extends AppCompatActivity {
 
@@ -47,7 +50,7 @@ public class HomeScreen extends AppCompatActivity {
                 String holdDiastolic;
                 holdSystolic = systolic.getText().toString();
                 holdDiastolic = diastolic.getText().toString();
-                int bpWarningLevel = 0;
+                int bpWarningLevel;
 
                 try {
                     systolicDouble = Double.parseDouble(holdSystolic);
@@ -87,10 +90,12 @@ public class HomeScreen extends AppCompatActivity {
                         rangeDisplay.setText(getString(R.string.bpLow));
                         rangeDisplay.setBackgroundColor(getColor(R.color.stage2));
 
-                    default:
+                    case 6:
                         rangeDisplay.setText(getString(R.string.bpCrisis)) ;
                         rangeDisplay.setBackgroundColor(getColor(R.color.stage5));
                         break;
+                    default:
+                        rangeDisplay.setText(getString(R.string.invalid));
                 }
                 writeFile();
 
@@ -100,7 +105,9 @@ public class HomeScreen extends AppCompatActivity {
         viewHistory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                readFile();
+                openHistoryScreen();
+
+                //readFile();
 
             }
         });
@@ -115,18 +122,21 @@ public class HomeScreen extends AppCompatActivity {
 
     public int calculateBpRange(double s, double d){
         int bpWarningLevel = 0;
-        if (s < 120 && d < 80){
+        if (s < 100 || d < 60){
+            bpWarningLevel = 5;
+        }else if (s < 120 && d < 80 && s >= 100 && d >= 60){
             bpWarningLevel = 1;
-        }else if (s >= 120 && s < 130 && d < 80){
+        }else if (s >= 120 && s < 130 && d <= 80){
             bpWarningLevel = 2;
         }else if (s >= 130 && s < 140 && d < 89 || d >= 80 && d < 89){
             bpWarningLevel = 3;
         } else if (s >= 140 && s < 180 && d < 120 || d >= 90 && d < 120) {
             bpWarningLevel = 4;
-        }else if (s >= 180 || d >= 120){
+        }else if (s < 120 && d < 80) {
             bpWarningLevel = 5;
-        }else if (s < 100 || d < 60)
+        }else if (s >= 180 || d >= 120)
             bpWarningLevel = 6;
+
         return bpWarningLevel;
 
 
@@ -135,10 +145,10 @@ public class HomeScreen extends AppCompatActivity {
     public void writeFile() {
         String systolicUserInput = systolic.getText().toString();
         String diastolicUserInput = diastolic.getText().toString();
-        String bloodPressure = systolicUserInput + " / " + diastolicUserInput;
+        String bloodPressure = dateTimeStamp() + "  " + systolicUserInput + " / " + diastolicUserInput + "\n";
 
         try {
-            FileOutputStream fileOutputStream = openFileOutput("bloodPressureLog.txt", MODE_PRIVATE);
+            FileOutputStream fileOutputStream = openFileOutput("bloodPressureLog.txt", MODE_APPEND);
             fileOutputStream.write(bloodPressure.getBytes());
             fileOutputStream.close();
 
@@ -155,26 +165,36 @@ public class HomeScreen extends AppCompatActivity {
 
     }
 
-    public void readFile() {
+    public String dateTimeStamp() {
+        Date myDate = new Date();
+        return DateFormat.getDateTimeInstance().format(myDate);
+    }
 
-        try {
-            FileInputStream fileInputStream = openFileInput("bloodPressureLog.txt");
-            InputStreamReader inputStreamReader = new InputStreamReader(fileInputStream);
+//    public void readFile() {
+//
+//        try {
+//            FileInputStream fileInputStream = openFileInput("bloodPressureLog.txt");
+//            InputStreamReader inputStreamReader = new InputStreamReader(fileInputStream);
+//
+//            BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+//            StringBuilder stringBuffer = new StringBuilder();
+//
+//            String lineItem;
+//            while ((lineItem = bufferedReader.readLine()) !=null) {
+//                stringBuffer.append(lineItem).append("\n");
+//            }
+//
+//            bpDisplay.setText(stringBuffer.toString());
+//        } catch (FileNotFoundException e) {
+//            e.printStackTrace();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//    }
 
-            BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
-            StringBuilder stringBuffer = new StringBuilder();
-
-            String lineItem;
-            while ((lineItem = bufferedReader.readLine()) !=null) {
-                stringBuffer.append(lineItem).append("\n");
-            }
-
-            bpDisplay.setText(stringBuffer.toString());
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public void openHistoryScreen(){
+        Intent intent = new Intent(this, HistoryScreen.class);
+        startActivity(intent);
     }
 
 }

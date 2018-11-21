@@ -19,4 +19,7 @@
     <string name="bpStage2">You have stage 2 hypertension</string>
     <string name="bpCrisis">You are having a hypertensive crisis!</string>
     <string name="bpLow">Your blood pressure is low</string>
+    <string name="invalid">The blood pressure you entered is invalid</string>
+    <string name="historyTitle">Your Previous Logs</string>
+    <string name="dateFormat">MM/dd/yyyy HH:mm:ss</string>
 </resources>
