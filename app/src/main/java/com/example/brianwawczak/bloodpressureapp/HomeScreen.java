@@ -16,6 +16,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.util.Date;
+import java.util.Objects;
 
 public class HomeScreen extends AppCompatActivity {
 
@@ -26,17 +27,21 @@ public class HomeScreen extends AppCompatActivity {
     TextView bpDisplay;
     Button logBp;
     Button viewHistory;
-    Button calculateAverage;
+    //Button calculateAverage;
 
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_screen);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setLogo(R.mipmap.ic_launcher);
+        getSupportActionBar().setDisplayUseLogoEnabled(true);
 
         logBp = findViewById(R.id.idBtnLogBp);
         viewHistory = findViewById(R.id.idBtnViewHistory);
-        calculateAverage = findViewById(R.id.idBtnAverage);
+        //calculateAverage = findViewById(R.id.idBtnAverage);
         systolic = findViewById(R.id.idUserBpInput1);
         diastolic = findViewById(R.id.idBpInput2);
         bpDisplay = findViewById(R.id.idBpDisplay);
@@ -112,12 +117,12 @@ public class HomeScreen extends AppCompatActivity {
             }
         });
 
-        calculateAverage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
+//        calculateAverage.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//            }
+//        });
     }
 
     public int calculateBpRange(double s, double d){
@@ -149,7 +154,7 @@ public class HomeScreen extends AppCompatActivity {
             FileOutputStream fileOutputStream = openFileOutput("bloodPressureLog.txt", MODE_APPEND);
             fileOutputStream.write(bloodPressure.getBytes());
             fileOutputStream.close();
-            Toast.makeText(getApplicationContext(), "Log saved", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "Log saved", Toast.LENGTH_SHORT).show();
 
             systolic.setText("");
             diastolic.setText("");
