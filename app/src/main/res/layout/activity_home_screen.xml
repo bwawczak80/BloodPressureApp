@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomeScreen">
+    tools:context=".HomeScreen"
+    android:background="@color/background">
 
     <ImageView
         android:id="@+id/imageView2"
@@ -18,7 +19,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/blood_pressure" />
+        app:srcCompat="@drawable/bp_two" />
 
     <EditText
         android:id="@+id/idBpInput2"
@@ -26,6 +27,7 @@
         android:layout_height="43dp"
         android:layout_marginStart="12dp"
         android:layout_marginTop="16dp"
+        android:background="@color/inputFields"
         android:ems="10"
         android:gravity="center_vertical|center_horizontal"
         android:hint="@string/inputHintTwo"
@@ -40,6 +42,7 @@
         android:layout_height="43dp"
         android:layout_marginEnd="12dp"
         android:layout_marginTop="16dp"
+        android:background="@color/inputFields"
         android:ems="10"
         android:gravity="center_vertical|center_horizontal"
         android:hint="@string/inputHintOne"
@@ -102,6 +105,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
+        android:background="@color/buttonGray"
         android:text="@string/btnViewHistory"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -114,6 +118,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
+        android:background="@color/buttonGray"
         android:text="@string/btnViewAverage"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -126,6 +131,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
+        android:background="@color/buttonGray"
         android:text="@string/btnLogBP"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"

@@ -11,12 +11,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.io.BufferedReader;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.text.DateFormat;
 import java.util.Date;
 
@@ -27,15 +24,19 @@ public class HomeScreen extends AppCompatActivity {
     EditText systolic;
     EditText diastolic;
     TextView bpDisplay;
+    Button logBp;
+    Button viewHistory;
+    Button calculateAverage;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_screen);
 
-        final Button logBp = findViewById(R.id.idBtnLogBp);
-        final Button viewHistory = findViewById(R.id.idBtnViewHistory);
-        final Button calculateAverage = findViewById(R.id.idBtnAverage);
+        logBp = findViewById(R.id.idBtnLogBp);
+        viewHistory = findViewById(R.id.idBtnViewHistory);
+        calculateAverage = findViewById(R.id.idBtnAverage);
         systolic = findViewById(R.id.idUserBpInput1);
         diastolic = findViewById(R.id.idBpInput2);
         bpDisplay = findViewById(R.id.idBpDisplay);
@@ -89,13 +90,14 @@ public class HomeScreen extends AppCompatActivity {
                     case 5:
                         rangeDisplay.setText(getString(R.string.bpLow));
                         rangeDisplay.setBackgroundColor(getColor(R.color.stage2));
-
+                        break;
                     case 6:
                         rangeDisplay.setText(getString(R.string.bpCrisis)) ;
                         rangeDisplay.setBackgroundColor(getColor(R.color.stage5));
                         break;
                     default:
                         rangeDisplay.setText(getString(R.string.invalid));
+                        break;
                 }
                 writeFile();
 
@@ -106,8 +108,6 @@ public class HomeScreen extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 openHistoryScreen();
-
-                //readFile();
 
             }
         });
@@ -136,9 +136,7 @@ public class HomeScreen extends AppCompatActivity {
             bpWarningLevel = 5;
         }else if (s >= 180 || d >= 120)
             bpWarningLevel = 6;
-
         return bpWarningLevel;
-
 
     }
 
@@ -151,7 +149,6 @@ public class HomeScreen extends AppCompatActivity {
             FileOutputStream fileOutputStream = openFileOutput("bloodPressureLog.txt", MODE_APPEND);
             fileOutputStream.write(bloodPressure.getBytes());
             fileOutputStream.close();
-
             Toast.makeText(getApplicationContext(), "Log saved", Toast.LENGTH_LONG).show();
 
             systolic.setText("");
@@ -169,28 +166,6 @@ public class HomeScreen extends AppCompatActivity {
         Date myDate = new Date();
         return DateFormat.getDateTimeInstance().format(myDate);
     }
-
-//    public void readFile() {
-//
-//        try {
-//            FileInputStream fileInputStream = openFileInput("bloodPressureLog.txt");
-//            InputStreamReader inputStreamReader = new InputStreamReader(fileInputStream);
-//
-//            BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
-//            StringBuilder stringBuffer = new StringBuilder();
-//
-//            String lineItem;
-//            while ((lineItem = bufferedReader.readLine()) !=null) {
-//                stringBuffer.append(lineItem).append("\n");
-//            }
-//
-//            bpDisplay.setText(stringBuffer.toString());
-//        } catch (FileNotFoundException e) {
-//            e.printStackTrace();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//    }
 
     public void openHistoryScreen(){
         Intent intent = new Intent(this, HistoryScreen.class);

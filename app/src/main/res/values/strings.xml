@@ -1,4 +1,5 @@
 <resources>
+    <string name="clear">Delete All</string>
     <string name="btnLogBP">Log Blood Pressure</string>
     <string name="btnViewHistory">View History</string>
     <string name="btnViewAverage">View Weekly Average</string>
@@ -6,8 +7,8 @@
     <string name="userLoginNameHint">Enter Your User Name</string>
     <string name="userPasswordHint">Enter Your Password</string>
     <string name="loginButtonTxt">Login</string>
-    <string name="errMessageLogin">That is not the correct User Name</string>
-    <string name="errMessagePassword">That is not the correct password</string>
+    <string name="errMessageLogin">Your user name or password is incorrect</string>
+    <string name="errMessagePassword">Your user name or password is incorrect</string>
     <string name="imageDescr">Blood Pressure Image</string>
     <string name="inputHintOne">Systolic</string>
     <string name="inputHintTwo">Diastolic</string>
@@ -22,4 +23,6 @@
     <string name="invalid">The blood pressure you entered is invalid</string>
     <string name="historyTitle">Your Previous Logs</string>
     <string name="dateFormat">MM/dd/yyyy HH:mm:ss</string>
+    <string name="sphygmomanometer">sphygmomanometer</string>
+    <string name="homeButton">Home</string>
 </resources>

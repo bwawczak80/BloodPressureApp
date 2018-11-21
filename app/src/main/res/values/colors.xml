@@ -8,4 +8,7 @@
     <color name="stage3">#FFB31F</color>
     <color name="stage4">#E87E24</color>
     <color name="stage5">#FF1300</color>
+    <color name="background">#889EAB</color>
+    <color name="inputFields">#EDEFF2</color>
+    <color name="buttonGray">#C4C4C4</color>
 </resources>
