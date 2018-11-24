@@ -10,7 +10,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -27,7 +26,6 @@ public class HomeScreen extends AppCompatActivity {
     TextView bpDisplay;
     Button logBp;
     Button viewHistory;
-    //Button calculateAverage;
 
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
@@ -41,7 +39,6 @@ public class HomeScreen extends AppCompatActivity {
 
         logBp = findViewById(R.id.idBtnLogBp);
         viewHistory = findViewById(R.id.idBtnViewHistory);
-        //calculateAverage = findViewById(R.id.idBtnAverage);
         systolic = findViewById(R.id.idUserBpInput1);
         diastolic = findViewById(R.id.idBpInput2);
         bpDisplay = findViewById(R.id.idBpDisplay);
@@ -117,12 +114,7 @@ public class HomeScreen extends AppCompatActivity {
             }
         });
 
-//        calculateAverage.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//            }
-//        });
+
     }
 
     public int calculateBpRange(double s, double d){
