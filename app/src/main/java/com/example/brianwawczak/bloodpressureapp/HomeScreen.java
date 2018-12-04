@@ -62,6 +62,7 @@ public class HomeScreen extends AppCompatActivity {
                 String holdDiastolic;
                 holdSystolic = systolic.getText().toString();
                 holdDiastolic = diastolic.getText().toString();
+                rangeDisplay.setBackgroundColor(getColor(R.color.background));
                 int bpWarningLevel;
 
                 try {
@@ -103,9 +104,12 @@ public class HomeScreen extends AppCompatActivity {
                         rangeDisplay.setBackgroundColor(getColor(R.color.stage2));
                         break;
                     case 6:
-                        rangeDisplay.setText(getString(R.string.bpCrisis)) ;
+                        rangeDisplay.setText(getString(R.string.bpCrisis));
                         rangeDisplay.setBackgroundColor(getColor(R.color.stage5));
                         break;
+                    case 7:
+                        rangeDisplay.setText(getString(R.string.invalid));
+                        rangeDisplay.setBackgroundColor(getColor(R.color.background));
                     default:
                         rangeDisplay.setText(getString(R.string.invalid));
                         break;
@@ -128,7 +132,9 @@ public class HomeScreen extends AppCompatActivity {
 
     public int calculateBpRange(double s, double d){
         int bpWarningLevel = 0;
-        if (s < 100 || d < 60){
+        if (s <= 0 || d <= 0){
+            bpWarningLevel = 7;
+        }else if (s < 100 || d < 60){
             bpWarningLevel = 5;
         }else if (s < 120 && d < 80 && s >= 100 && d >= 60){
             bpWarningLevel = 1;

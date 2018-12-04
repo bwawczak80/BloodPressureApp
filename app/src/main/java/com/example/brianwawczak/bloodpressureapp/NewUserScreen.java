@@ -43,8 +43,6 @@ public class NewUserScreen extends AppCompatActivity {
         homeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//TODO
-                //cancelNewUser();
 
                 goHome();
 
@@ -57,7 +55,9 @@ public class NewUserScreen extends AppCompatActivity {
 
                 if (passwordMatches()) {
                     saveUserData();
-                    goHome();
+                    Intent submitInfo = new Intent(NewUserScreen.this, MainActivity.class);
+                    startActivity(submitInfo);
+
 
 
                 }else{
@@ -112,9 +112,6 @@ public class NewUserScreen extends AppCompatActivity {
             userVerifyPassword.setHintTextColor(getColor(R.color.stage5));
         }
 
-    }
-//TODO
-    public void cancelNewUser(View v){ finish();
     }
 
 

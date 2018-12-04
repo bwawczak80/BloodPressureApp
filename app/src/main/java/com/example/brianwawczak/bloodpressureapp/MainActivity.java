@@ -103,7 +103,3 @@ public class MainActivity extends AppCompatActivity {
 
     }
 }
-// TODO
-
-
-// Auto fill UserName and Password upon return from creating a new user.

@@ -98,6 +98,4 @@ public class HistoryScreen extends AppCompatActivity {
 
 
 }
-//TODO
 
-// add display of user data
