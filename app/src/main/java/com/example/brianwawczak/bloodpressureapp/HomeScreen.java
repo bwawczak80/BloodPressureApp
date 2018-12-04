@@ -24,9 +24,9 @@ public class HomeScreen extends AppCompatActivity {
     EditText systolic;
     EditText diastolic;
     TextView bpDisplay;
+    TextView rangeDisplay;
     Button logBp;
     Button viewHistory;
-
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
@@ -42,7 +42,7 @@ public class HomeScreen extends AppCompatActivity {
         systolic = findViewById(R.id.idUserBpInput1);
         diastolic = findViewById(R.id.idBpInput2);
         bpDisplay = findViewById(R.id.idBpDisplay);
-        final TextView rangeDisplay = findViewById(R.id.idRangeDisplay);
+        rangeDisplay = findViewById(R.id.idRangeDisplay);
 
         logBp.setOnClickListener(new View.OnClickListener() {
 
@@ -165,8 +165,13 @@ public class HomeScreen extends AppCompatActivity {
     }
 
     public void openHistoryScreen(){
-        Intent intent = new Intent(this, HistoryScreen.class);
+        Intent intent = new Intent(HomeScreen.this, HistoryScreen.class);
         startActivity(intent);
     }
 
 }
+
+
+// TODO
+
+// Display a user Specific Welcome Text

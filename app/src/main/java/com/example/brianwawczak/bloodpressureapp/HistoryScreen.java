@@ -20,8 +20,6 @@ public class HistoryScreen extends AppCompatActivity {
     TextView logDisplay;
     Button goHome;
 
-
-
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,8 +38,6 @@ public class HistoryScreen extends AppCompatActivity {
                 goHome();
             }
         });
-
-
 
     }
 
@@ -77,4 +73,6 @@ public class HistoryScreen extends AppCompatActivity {
 
 
 }
+//TODO
 
+// add display of user data

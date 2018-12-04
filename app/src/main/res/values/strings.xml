@@ -7,8 +7,8 @@
     <string name="userLoginNameHint">Enter Your User Name</string>
     <string name="userPasswordHint">Enter Your Password</string>
     <string name="loginButtonTxt">Login</string>
-    <string name="errMessageLogin">Your user name or password is incorrect</string>
-    <string name="errMessagePassword">Your user name or password is incorrect</string>
+    <string name="errMessageLogin">Your user is incorrect</string>
+    <string name="errMessagePassword">Your password is incorrect</string>
     <string name="imageDescr">Blood Pressure Image</string>
     <string name="inputHintOne">Systolic</string>
     <string name="inputHintTwo">Diastolic</string>
@@ -25,4 +25,13 @@
     <string name="dateFormat">MM/dd/yyyy HH:mm:ss</string>
     <string name="sphygmomanometer">sphygmomanometer</string>
     <string name="homeButton">Home</string>
+    <string name="newUserBtn">New User</string>
+    <string name="firstName">First Name</string>
+    <string name="lastName">Last Name</string>
+    <string name="dateOfBirth">Date of Birth</string>
+    <string name="userName">Choose a User Name</string>
+    <string name="userPassword">Choose a Password</string>
+    <string name="verifyPassword">Verify Your Password</string>
+    <string name="submitBtn">Submit</string>
+    <string name="pwMatchError">Your passwords do not match. Please try again</string>
 </resources>
