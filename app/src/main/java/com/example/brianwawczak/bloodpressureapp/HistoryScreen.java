@@ -1,5 +1,6 @@
 package com.example.brianwawczak.bloodpressureapp;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
@@ -19,6 +20,8 @@ public class HistoryScreen extends AppCompatActivity {
 
     TextView logDisplay;
     Button goHome;
+    TextView displayName;
+    TextView displayDob;
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
@@ -27,10 +30,20 @@ public class HistoryScreen extends AppCompatActivity {
         setContentView(R.layout.activity_history_screen);
         logDisplay = findViewById(R.id.idHistoryText);
         goHome = findViewById(R.id.idHomeButton);
+        displayName = findViewById(R.id.idDisplayName);
+        displayDob = findViewById(R.id.idDisplayDob);
         Objects.requireNonNull(getSupportActionBar()).setDisplayShowHomeEnabled(true);
         getSupportActionBar().setLogo(R.mipmap.ic_launcher);
         getSupportActionBar().setDisplayUseLogoEnabled(true);
         readFile();
+        String a[] = readFromSharedPref();
+        String holdFirst = a[0];
+        String holdLast = a[1];
+        String holdName = (holdFirst + " " + holdLast);
+
+
+        displayName.setText(holdName);
+        displayDob.setText(a[2]);
 
         goHome.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,6 +78,18 @@ public class HistoryScreen extends AppCompatActivity {
     public void goHome(){
         Intent intent = new Intent(this, HomeScreen.class);
         startActivity(intent);
+    }
+
+    public String[] readFromSharedPref() {
+
+        SharedPreferences sp = getSharedPreferences("UserData", MODE_PRIVATE);
+        String first = sp.getString("fName", "");
+        String last = sp.getString("lName", "");
+        String dob = sp.getString("dOfB", "");
+        String user = sp.getString("uName", "");
+        String pw = sp.getString("pass", "");
+        return new String[]{first, last, dob, user, pw};
+
     }
 
 

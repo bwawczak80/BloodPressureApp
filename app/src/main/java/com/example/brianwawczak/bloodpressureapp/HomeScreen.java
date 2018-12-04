@@ -1,6 +1,7 @@
 package com.example.brianwawczak.bloodpressureapp;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
@@ -27,6 +28,8 @@ public class HomeScreen extends AppCompatActivity {
     TextView rangeDisplay;
     Button logBp;
     Button viewHistory;
+    TextView welcomeText;
+    String welcomeMsg;
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
@@ -37,12 +40,18 @@ public class HomeScreen extends AppCompatActivity {
         getSupportActionBar().setLogo(R.mipmap.ic_launcher);
         getSupportActionBar().setDisplayUseLogoEnabled(true);
 
+
+        welcomeText = findViewById(R.id.idWelcomeTxt);
         logBp = findViewById(R.id.idBtnLogBp);
         viewHistory = findViewById(R.id.idBtnViewHistory);
         systolic = findViewById(R.id.idUserBpInput1);
         diastolic = findViewById(R.id.idBpInput2);
         bpDisplay = findViewById(R.id.idBpDisplay);
         rangeDisplay = findViewById(R.id.idRangeDisplay);
+        String a[] = readFromSharedPref();
+        welcomeMsg = (getString(R.string.welcome) + " " + a[0] + (getString(R.string.enterBp)));
+        welcomeText.setText(welcomeMsg);
+
 
         logBp.setOnClickListener(new View.OnClickListener() {
 
@@ -169,9 +178,18 @@ public class HomeScreen extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public String[] readFromSharedPref() {
+
+        SharedPreferences sp = getSharedPreferences("UserData", MODE_PRIVATE);
+        String first = sp.getString("fName", "");
+        String last = sp.getString("lName", "");
+        String dob = sp.getString("dOfB", "");
+        String user = sp.getString("uName", "");
+        String pw = sp.getString("pass", "");
+        return new String[]{first, last, dob, user, pw};
+
+    }
+
 }
 
 
-// TODO
-
-// Display a user Specific Welcome Text

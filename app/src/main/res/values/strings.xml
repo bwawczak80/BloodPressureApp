@@ -1,4 +1,8 @@
 <resources>
+    <string name="enterBp">! Enter your BP.</string>
+    <string name="welcome">Welcome </string>
+    <string name="name">Name:</string>
+    <string name="birth">D.O.B:</string>
     <string name="clear">Delete All</string>
     <string name="btnLogBP">Log Blood Pressure</string>
     <string name="btnViewHistory">View History</string>

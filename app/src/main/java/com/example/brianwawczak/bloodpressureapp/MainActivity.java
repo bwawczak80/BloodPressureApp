@@ -73,7 +73,6 @@ public class MainActivity extends AppCompatActivity {
         startActivity(homeScreenIntent);
     }
 
-
     public void openNewUserScreen() {
         Intent newUserIntent = new Intent (MainActivity.this, NewUserScreen.class);
         startActivity(newUserIntent);
